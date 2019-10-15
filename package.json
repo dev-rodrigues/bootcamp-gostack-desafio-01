@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/httpsantos/bootcamp-gostack-desafio-01.git",
   "author": "Carlos Henrique <carlos.hrq.rodrigues@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
