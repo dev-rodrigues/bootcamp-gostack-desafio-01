@@ -5,7 +5,13 @@
   "repository": "https://github.com/httpsantos/bootcamp-gostack-desafio-01.git",
   "author": "Carlos Henrique <carlos.hrq.rodrigues@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
   }
 }
