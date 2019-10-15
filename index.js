@@ -11,10 +11,22 @@ server.get('/projects', (req, res) => {
 // Deve retonar o projeto do id especificado na URL
 server.get('/projects/:id', (req, res) => {
     const { id } = req.params;
-    var project = projects.find(function(element) {
+    var project = projects.find((element) => {
         return element.id === id;
     });
 
+    return res.json(project);
+});
+
+// Deve criar um novo projeto
+server.post('/projects', (req, res) => {
+    const { id, title } = req.body;
+    const project = {
+        id,
+        title
+    }
+    projects.push(project);
+    
     return res.json(project);
 });
 
