@@ -4,6 +4,13 @@ server.use(express.json());
 
 const projects = [{ id: "1", title: "Novo projeto", tasks: [] }]
 
+// Deve logar toda requisicao ao servidor
+server.use((req, res, next) => {
+    console.time('Request');
+    console.log(`Metodo de log ${req.method}; URL ${req.url}`);
+    return next();
+});
+
 // Deve retornar todos os projetos guardados em memoria
 server.get('/projects', (req, res) => {
     return res.json(projects);
@@ -44,14 +51,14 @@ server.put('/projects/:id/tasks', (req, res) => {
 // Deve apagar o projeto do id informado
 server.delete('/projects/:id', (req, res) => {
     const { id } = req.params;
-  
+
     const projectIndex = BuscaIndice(id);
-  
+
     projects.splice(projectIndex, 1);
-  
+
     return res.send();
 });
-  
+
 
 // Deve buscar o indice do projeto
 function BuscaIndice(id) {
