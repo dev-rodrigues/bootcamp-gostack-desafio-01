@@ -12,9 +12,7 @@ server.get('/projects', (req, res) => {
 // Deve retonar o projeto do id especificado na URL
 server.get('/projects/:id', (req, res) => {
     const { id } = req.params;
-    var project = projects.find((element) => {
-        return element.id === id;
-    });
+    var project = BuscaProjetoPorId(id);
 
     return res.json(project);
 });
@@ -31,5 +29,24 @@ server.post('/projects', (req, res) => {
 
     return res.json(project);
 });
+
+// Deve recer o id do projeto e o titulo da nova task em seguida editar o projeto
+server.put('/projects/:id/tasks', (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    var project = BuscaProjetoPorId(id);
+    project.tasks.push(title);
+
+    return res.json(project);
+});
+
+// Deve percorrer o verto de projetos e localizar o projeto do id passado
+function BuscaProjetoPorId(id) {
+    var project = projects.find((element) => {
+        return element.id === id;
+    });
+    return project;
+}
 
 server.listen(3000);
