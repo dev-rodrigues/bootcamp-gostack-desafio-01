@@ -41,6 +41,23 @@ server.put('/projects/:id/tasks', (req, res) => {
     return res.json(project);
 });
 
+// Deve apagar o projeto do id informado
+server.delete('/projects/:id', (req, res) => {
+    const { id } = req.params;
+  
+    const projectIndex = BuscaIndice(id);
+  
+    projects.splice(projectIndex, 1);
+  
+    return res.send();
+});
+  
+
+// Deve buscar o indice do projeto
+function BuscaIndice(id) {
+    return projects.findIndex(p => p.id == id);
+}
+
 // Deve percorrer o verto de projetos e localizar o projeto do id passado
 function BuscaProjetoPorId(id) {
     var project = projects.find((element) => {
